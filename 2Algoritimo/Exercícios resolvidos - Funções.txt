@@ -1,0 +1,1203 @@
+----------------------------------------------------------------------------------------
+Exercício print - Aula
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+#include <time.h>
+
+float Retangulo();
+float Circunferencia();
+
+int main(int argc, char *argv[]) 
+{
+	setlocale(LC_ALL, "Portuguese");
+	int codigo;
+	float area;
+	printf("Cálculo de áreas: \n");
+	printf("1 - Retângulo \n");
+	printf("2 - Circunferência \n");
+	scanf("%i", &codigo);
+	
+	if(codigo == 1)	{
+		area = Retangulo();
+		printf("\nA área do Retângulo é: %.2f", area);
+	}
+	if(codigo == 2)	{
+		area = Circunferencia();
+		printf("\nA área da Circunferência é: %.2f", area);
+	}
+}
+
+float Retangulo()
+{
+	float base, altura, area;
+	printf("Informe a base: ");
+    scanf("%f",&base);
+    printf("Informe a altura: ");
+    scanf("%f",&altura);
+    area = base * altura;
+    return area;
+}
+float Circunferencia()
+{
+	 float raio, area;
+	 const float pi = 3.1415;
+	 printf("Informe o valor do raio: ");
+     scanf("%f",&raio);
+     area = (4 * pi * pow(raio,2));
+     return area;
+}
+
+-----------------------------------------------------------------------------------
+Exercício 01
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+#include <time.h>
+
+//float maiorNumero();
+
+int main(int argc, char *argv[]) 
+{
+	setlocale(LC_ALL, "Portuguese");
+	
+	float Maior;
+	Maior =  maiorNumero();
+	printf("\nO maior número é: %f", Maior);
+	
+}
+
+float maiorNumero()
+{
+	float numero01, numero02, numeroMaior;
+	printf("Informe o primeiro número: ");
+    scanf("%f",&numero01);
+    printf("Informe o segundo número: ");
+    scanf("%f",&numero02);
+    
+    while(numero02 == numero01)
+    {
+    	printf("Erro! Os números devem ser distintos. Digite outro número: ");
+    	scanf("%f",&numero02);
+	}
+	
+	if(numero01 > numero02)
+	{
+		numeroMaior = numero01;
+		return numeroMaior;
+	}
+	else
+	{
+		numeroMaior = numero02;
+		return numeroMaior;
+	}   
+}
+
+-----------------------------------------------------------------------------------
+Exercício 02 - IF
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+#include <time.h>
+
+
+float soma();
+float subtracao();
+float multiplicacao();
+float divisao();
+
+int main(int argc, char *argv[]) 
+{
+	setlocale(LC_ALL, "Portuguese");
+	
+	float Result_soma, Result_subtracao, Result_multiplicacao, Result_divisao;
+	int opcao;
+	
+	
+	while(opcao != 5)
+	{
+		printf("Cálculo de áreas: \n");
+		printf("1 - Soma \n");
+		printf("2 - Subtração \n");
+		printf("3 - Multiplicação \n");
+		printf("4 - Divisão \n");
+		printf("5 - Sair do Programa \n");
+		scanf("%i", &opcao);
+
+	
+		if(opcao == 1)
+		{
+			Result_soma =  soma();
+			printf("\nO valor da soma é : %.2f \n\n", Result_soma);
+		}
+		if(opcao == 2)
+		{
+			Result_subtracao =  subtracao();
+			printf("\nO valor da subtração é : %.2f \n\n", Result_subtracao);
+		}
+		if(opcao == 3)
+		{
+			Result_multiplicacao =  multiplicacao();
+			printf("\nO valor da multiplicação é : %.2f \n\n", Result_multiplicacao);
+			
+		}
+		if(opcao == 4)
+		{
+			Result_divisao =  divisao();
+			printf("\nO valor da divisão é : %.2f \n\n", Result_divisao);
+			
+		}
+	}
+	
+	if(opcao == 5)
+	{
+		exit(0);
+		
+	}
+}
+
+float soma()
+{
+	  float num01, num02, soma;
+	  printf("Informe o primeiro número: ");
+      scanf("%f",&num01);
+      printf("Informe o segundo número: ");
+      scanf("%f",&num02);
+      
+      soma = num01 + num02;
+      
+      return soma;
+}
+
+float subtracao()
+{
+	  float num01, num02, subtracao;
+	  printf("Informe o primeiro número: ");
+      scanf("%f",&num01);
+      printf("Informe o segundo número: ");
+      scanf("%f",&num02);
+      
+      subtracao = num01 - num02;
+      
+      return subtracao;
+}
+
+float multiplicacao()
+{
+	  float num01, num02, multiplicacao;
+	  printf("Informe o primeiro número: ");
+      scanf("%f",&num01);
+      printf("Informe o segundo número: ");
+      scanf("%f",&num02);
+      
+      multiplicacao = num01 * num02;
+      
+      return multiplicacao;
+}
+
+float divisao()
+{
+	  float num01, num02, divisao;
+	  printf("Informe o primeiro número: ");
+      scanf("%f",&num01);
+      printf("Informe o segundo número: ");
+      scanf("%f",&num02);
+      
+      while(num02 == 0)
+      {
+      		printf("Erro! O denominado precisa ser diferente de zero. Digite outro número: ");
+    		scanf("%f",&num02);
+	  }
+      divisao = num01 / num02;
+      
+      return divisao;
+}
+
+-----------------------------------------------------------------------------------
+Exercício 2 (versão 1) - CASE
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+#include <time.h>
+
+float soma();
+float subtracao();
+float multiplicacao();
+float divisao();
+
+int main(int argc, char *argv[]) 
+{
+	setlocale(LC_ALL, "Portuguese");
+	
+	float Result_soma, Result_subtracao, Result_multiplicacao, Result_divisao;
+	int opcao;
+	
+	
+	while(opcao != 5)
+	{
+		printf("Cálculo de áreas: \n");
+		printf("1 - Soma \n");
+		printf("2 - Subtração \n");
+		printf("3 - Multiplicação \n");
+		printf("4 - Divisão \n");
+		printf("5 - Sair do Programa \n");
+		scanf("%i", &opcao);
+
+		switch(opcao)
+		{
+			case 1:
+				Result_soma =  soma();
+				printf("\nO valor da soma é : %.2f \n\n", Result_soma);
+			break;
+			
+			case 2:
+				Result_subtracao =  subtracao();
+				printf("\nO valor da subtração é : %.2f \n\n", Result_subtracao);
+			break;
+			
+			case 3:
+				Result_multiplicacao =  multiplicacao();
+				printf("\nO valor da multiplicação é : %.2f \n\n", Result_multiplicacao);
+			break;
+			
+			case 4:
+				Result_divisao =  divisao();
+				printf("\nO valor da divisão é : %.2f \n\n", Result_divisao);
+			break;
+			
+			case 5:
+				exit(0);
+			break;		
+		}
+	}
+
+}
+
+float soma()
+{
+	  float num01, num02, soma;
+	  printf("Informe o primeiro número: ");
+      scanf("%f",&num01);
+      printf("Informe o segundo número: ");
+      scanf("%f",&num02);
+      
+      soma = num01 + num02;
+      
+      return soma;
+}
+
+float subtracao()
+{
+	  float num01, num02, subtracao;
+	  printf("Informe o primeiro número: ");
+      scanf("%f",&num01);
+      printf("Informe o segundo número: ");
+      scanf("%f",&num02);
+      
+      subtracao = num01 - num02;
+      
+      return subtracao;
+}
+
+float multiplicacao()
+{
+	  float num01, num02, multiplicacao;
+	  printf("Informe o primeiro número: ");
+      scanf("%f",&num01);
+      printf("Informe o segundo número: ");
+      scanf("%f",&num02);
+      
+      multiplicacao = num01 * num02;
+      
+      return multiplicacao;
+}
+
+float divisao()
+{
+	  float num01, num02, divisao;
+	  printf("Informe o primeiro número: ");
+      scanf("%f",&num01);
+      printf("Informe o segundo número: ");
+      scanf("%f",&num02);
+      
+      while(num02 == 0)
+      {
+      		printf("Erro! O denominado precisa ser diferente de zero. Digite outro número: ");
+    		scanf("%f",&num02);
+	  }
+      divisao = num01 / num02;
+      
+      return divisao;
+}
+
+-----------------------------------------------------------------------------------
+Exercício 2 (versão 2) - CASE e as funções com parâmetros
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+#include <time.h>
+
+float soma(float num01, float num02)
+{
+	  float Result_soma;
+      Result_soma = num01 + num02;
+      
+      return Result_soma;
+}
+
+float subtracao(float num01, float num02)
+{
+	  float Result_subtracao;
+      Result_subtracao = num01 - num02;
+      
+      return Result_subtracao;
+}
+
+float multiplicacao(float num01, float num02)
+{
+	  float Result_multiplicacao;
+      Result_multiplicacao = num01 * num02;
+      
+      return Result_multiplicacao;
+}
+
+float divisao(float num01, float num02)
+{
+	  float Result_divisao;
+      
+      
+      	  while(num02 == 0)
+	      {
+	      		printf("Erro! O denominado precisa ser diferente de zero. Digite outro número: ");
+	    		scanf("%f",&num02);
+		  }
+	  
+	  	Result_divisao = num01 / num02;
+	  
+      
+      
+      return Result_divisao;
+}
+
+int main(int argc, char *argv[]) 
+{
+	setlocale(LC_ALL, "Portuguese");
+	
+	float Result_soma, Result_subtracao, Result_multiplicacao, Result_divisao;
+	float num01, num02;
+	int opcao;
+	
+	
+	while(opcao != 5)
+	{
+		printf("Cálculo de áreas: \n");
+		printf("1 - Soma \n");
+		printf("2 - Subtração \n");
+		printf("3 - Multiplicação \n");
+		printf("4 - Divisão \n");
+		printf("5 - Sair do Programa \n");
+		scanf("%i", &opcao);
+
+		switch(opcao)
+		{
+			case 1:
+				
+			    printf("Informe o primeiro número: ");
+		        scanf("%f",&num01);
+		        printf("Informe o segundo número: ");
+		        scanf("%f",&num02);
+				
+				Result_soma =  soma(num01, num02);
+				
+				printf("\nO valor da soma é : %.2f \n\n", Result_soma);
+			break;
+			
+			case 2:
+				
+				printf("Informe o primeiro número: ");
+		        scanf("%f",&num01);
+		        printf("Informe o segundo número: ");
+		        scanf("%f",&num02);
+		        
+				Result_subtracao =  subtracao(num01, num02);
+				
+				printf("\nO valor da subtração é : %.2f \n\n", Result_subtracao);
+			break;
+			
+			case 3:
+				
+				printf("Informe o primeiro número: ");
+		        scanf("%f",&num01);
+		        printf("Informe o segundo número: ");
+		        scanf("%f",&num02);
+		        
+				Result_multiplicacao =  multiplicacao(num01, num02);
+				printf("\nO valor da multiplicação é : %.2f \n\n", Result_multiplicacao);
+			break;
+			
+			case 4:
+				
+				printf("Informe o primeiro número: ");
+		        scanf("%f",&num01);
+		        printf("Informe o segundo número: ");
+		        scanf("%f",&num02);
+		        
+				Result_divisao =  divisao(num01, num02);
+				printf("\nO valor da divisão é : %.2f \n\n", Result_divisao);
+			break;
+			
+			case 5:
+				exit(0);
+			break;		
+		}
+	}
+
+}
+
+-----------------------------------------------------------------------------------
+Exercício 3 - Aula
+
+Este código já encontra-se pronto nos slides.
+Adicionado laço de repetição
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+float media(float n1, float n2, float n3)
+{
+	float media;
+	media = (n1 + n2 + n3)/3;
+	return media;
+}
+
+int main() 
+{
+   setlocale(LC_ALL,"Portuguese"); 
+   
+   float nota1, nota2, nota3, mediaAluno;
+   int opcao;
+   
+   do
+   {
+   	   printf("Informe a primeira nota: \n");
+	   scanf("%f", &nota1);
+	   
+	   printf("Informe a segunda nota: \n");
+	   scanf("%f", &nota2);
+	   
+	   printf("Informe a terceira nota: \n");
+	   scanf("%f", &nota3);
+	   
+	   mediaAluno = media(nota1, nota2, nota3);
+	   
+	   printf("O valor da média é %.2f \n", mediaAluno);
+	   
+	   printf("Digite um 1 para continuar ou 2 para sair: \n");
+	   scanf("%d", &opcao);
+   }
+   while(opcao == 1);
+   
+   return 0;
+}
+
+-----------------------------------------------------------------------------------
+Códigos - Funções VOID
+-----------------------------------------------------------------------------------
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+void imprime(int numero)
+{
+	printf("\nO número informado na função principal é %d \n", numero);
+}
+int main() 
+{
+   setlocale(LC_ALL,"Portuguese"); 
+   int numero;
+   printf("Informe um número qualquer \n");
+   scanf("%d", &numero);
+   imprime(numero);
+   return 0;
+}
+
+
+-----------------------------------------------------------------------------------
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+void calculaDivisao(void)
+{
+	float numero1, numero2, result;
+	printf("Informe o primeiro número \n");
+	scanf("%f", &numero1);
+	
+	printf("Informe o segundo número \n");
+	scanf("%f", &numero2);
+	
+	if(numero2 != 0)
+	{
+		result = (numero1 / numero2);
+		printf("O valor da divisão é %.2f \n", result);
+	}
+	else
+	{
+		printf("O denominador informado foi %.2f, logo a divisão não pode ser realizada", numero2);
+	}
+}
+int main(void) 
+{
+   setlocale(LC_ALL,"Portuguese"); 
+   calculaDivisao();
+   return 0;
+}
+
+-----------------------------------------------------------------------------------
+Atividades
+
+1)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+float verifica(float num1, float num2)
+{
+	if(num1 > num2)
+	{
+		return num1;
+	}
+	else
+	{
+		return num2;
+	}
+}
+
+float calculo_area(float base, float altura)
+{
+	return base*altura;
+}
+
+int main(int argc, char *argv[]) {
+	
+  	setlocale(LC_ALL, "Portuguese");
+ 	
+	float base, altura, area1, area2;
+ 	
+ 	printf("Informe a base do primeiro retângulo \n");
+ 	scanf("%f", &base);
+ 	
+ 	printf("Informe a altura do primeiro retângulo \n");
+ 	scanf("%f", &altura);
+ 	
+ 	area1 = calculo_area(base, altura);
+ 	
+ 	printf("Informe a base do segundo retângulo \n");
+ 	scanf("%f", &base);
+ 	
+ 	printf("Informe a altura do segundo retângulo \n");
+ 	scanf("%f", &altura);
+ 	
+ 	area2 = calculo_area(base, altura);
+ 	
+ 	printf("A área do primeiro retângulo é %.2f metros quadrados \n", area1);
+ 	printf("A área do segundo retângulo é %.2f metros quadrados \n", area2);
+ 	
+ 	if(area1 == area2)
+ 	{
+ 		printf("As áreas dos retângulos são iguais");
+	}
+	else
+	{
+		printf("A maior área é a de %.2f metros quadrados \n", verifica(area1, area2));
+	}
+ 	
+	return 0;
+}
+
+-----------------------------------------------------------------------------------
+2)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+
+float conversao(float temptaCelsius)
+{
+	float temptaFahrenheit;
+	temptaFahrenheit = (temptaCelsius * 1.8) + 32;
+	return temptaFahrenheit;
+}
+
+int main(int argc, char *argv[]) {
+	
+  	setlocale(LC_ALL, "Portuguese");
+ 	
+	float temptaCelsius, temptaFahrenheit;
+ 	
+ 	printf("Informe uma temperatura qualquer em graus Celsius \n");
+ 	scanf("%f", &temptaCelsius);
+ 	
+ 	temptaFahrenheit = conversao(temptaCelsius);
+ 	
+ 	printf("A temperatura em ºC é %.2f \n", temptaCelsius);
+ 	printf("A temperatura em ºF é %.2f \n", temptaFahrenheit);
+ 	
+	return 0;
+}
+
+-----------------------------------------------------------------------------------
+3)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+
+int maior_idd(int id1, int id2, int id3)
+{
+
+	if(id1 == id2 && id2 == id3)
+	{
+		return 0;
+	}
+	else if(id1 >= id2 && id1 >= id3)
+	{
+		return id1;
+	}
+	else if(id2 >= id3)
+	{
+		return id2;
+	}
+	else
+	{
+		return id3;
+	}
+	
+}
+
+int main(int argc, char *argv[]) {
+	
+  	setlocale(LC_ALL, "Portuguese");
+ 	
+	int idade_01, idade_02, idade_03, maior_idade;
+ 	
+ 	printf("Informe a primeira idade \n");
+ 	scanf("%i", &idade_01);
+ 	
+ 	printf("Informe a segunda idade \n");
+ 	scanf("%i", &idade_02);
+ 	
+ 	printf("Informe a terceira idade \n");
+ 	scanf("%i", &idade_03);
+ 	
+ 	maior_idade = maior_idd(idade_01, idade_02, idade_03);
+ 	
+ 	if(maior_idade == 0 )
+ 	{
+ 		printf("As idades são iguais: %d anos \n", idade_01);
+	}
+	else
+	{
+		printf("A maior idade informada é %d anos \n", maior_idade);
+	}
+
+}
+
+-----------------------------------------------------------------------------------
+4)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+
+float reajuste(int anos, float sal_bruto, char estado_civil)
+{
+	if((anos >= 5) && (estado_civil == 'C' || estado_civil == 'c'))
+	{
+		return sal_bruto * 1.10;
+	}
+	else
+	{
+		return sal_bruto * 1.08;
+	}
+}
+
+int main(int argc, char *argv[]) {
+	
+  	setlocale(LC_ALL, "Portuguese");
+ 	
+	char nome[30], estado_civil;
+	int anos;
+	float sal_bruto, novo_sal;
+	
+	printf("Informe o nome do funcionário \n");
+ 	scanf("%s", &nome);
+ 	
+ 	do
+ 	{
+ 		printf("Informe o salário bruto do funcionário \n");
+ 		scanf("%f", &sal_bruto);
+	}while(sal_bruto <= 0);
+	
+	do
+ 	{
+ 		printf("Informe os anos do funcionário na empresa \n");
+ 		scanf("%d", &anos);
+	}while(anos <= 0);
+	
+	/*printf("Informe o estado civil do funcionário (C - Casado ou S - Solteiro) \n");
+ 	scanf("%c", &estado_civil);*/
+ 	
+ 	while((estado_civil != 'C') && (estado_civil != 'c') &&
+	 	  (estado_civil != 'S') && (estado_civil != 's'))
+ 	{
+ 		printf("Informe um estado civil válido (C - Casado ou S - Solteiro) \n");
+ 		fflush(stdin);
+ 		scanf("%c", &estado_civil);
+	}
+ 		
+ 	novo_sal = reajuste(anos, sal_bruto, estado_civil);	
+ 		
+ 	printf("O novo salário do(a) funcionário(a) %s é R$ %.2f reais \n", nome, novo_sal);
+
+}
+
+-----------------------------------------------------------------------------------
+5)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+
+float calculaDistancia(float Px1, float Px2, float Py1, float Py2);
+
+int main(int argc, char *argv[]) {
+	
+  	setlocale(LC_ALL, "Portuguese");
+ 	
+	float x1, x2, y1, y2, res;
+	printf("Digite as coordenadas X e Y do ponto 1:\n");
+	scanf("%f %f", &x1, &y1);
+	
+	printf("Digite as coordenadas X e Y do ponto 2:\n");
+	scanf("%f %f", &x2, &y2);
+	
+	res = calculaDistancia(x1, x2, y1, y2);
+	printf("A distancia entre os pontos eh: %.2ff\n", res);
+}
+
+float calculaDistancia(float Px1, float Px2, float Py1, float Py2){
+	float a, b, c, d;
+	a = Px1 - Px2; // Encontra a distancia entre os pontos x1 e x2
+	b = Py1 - Py2; // Encontra a distancia entre os pontos y1 e y2
+	c = a * a + b * b; // faz a conta = aˆ2 + bˆ2
+	d = sqrt(c); // Acha a raiz da equação.
+	return d; // Retorna o resultado.
+}
+
+-----------------------------------------------------------------------------------
+6)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+
+int SomaDivisores(int n);
+
+int main(int argc, char *argv[]) {
+	
+  	setlocale(LC_ALL, "Portuguese");
+ 	
+ 	int numero, i;
+	for(i = 0; i < 5; i++){
+		printf("digite o %d número: ", i+1);
+		scanf("%d", &numero);
+		
+		while(numero < 0)
+		{
+			printf("digite o %d número positivo: ", i+1);
+			scanf("%d", &numero);
+		}
+		
+		printf("\n\tSoma dos divisores: %d\n", SomaDivisores(numero));
+	}
+	
+}
+
+int SomaDivisores(int n){
+	int i = 1, soma = 0;
+	printf("\tdivisores de %d: ", n);
+	while( i < n )
+	{ // Laço de repetição que vai de 1 até o valor de N
+		if (n % i == 0){ // O número N é divisível por i.
+		soma += i; // Soma os divisores
+		printf("%d, ", i );
+		}
+		i++;
+	}
+	return soma;
+}
+
+-----------------------------------------------------------------------------------
+7)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+
+float calc_total(float valor_dolar);
+float calc_custo_casa(float salario);
+float tot_casas(float total_reais, float custo_casa);
+float sobra(float total_reais, float total_casas, float custo_casa);
+
+int main(int argc, char *argv[]) {
+	
+  	setlocale(LC_ALL, "Portuguese");
+ 	
+ 	float valor_dolar, salario, total_reais, custo_casa, total_casas, sobra_dinheiro_casas;
+ 	
+ 	printf("Informe o valor do dólar \n");
+	scanf("%f", &valor_dolar);
+	
+	while(valor_dolar <= 0)
+	{
+		printf("Informe o valor do dólar correto \n");
+		scanf("%f", &valor_dolar);
+	}
+	
+	printf("Informe o valor do salário mínimo \n");
+	scanf("%f", &salario);
+	
+	while(salario <= 0)
+	{
+		printf("Informe o valor do salário mínimo correto \n");
+		scanf("%f", &salario);
+	}
+	
+	total_reais = calc_total(valor_dolar);
+	custo_casa = calc_custo_casa(salario);
+	total_casas = tot_casas(total_reais, custo_casa);
+//	sobra_dinheiro_casas = sobra(total_reais, total_casas, custo_casa);
+	
+	printf("O valor convertido para reais, considerando o valor do dólar de igual a R$ %.2f é igual a R$ %.2f \n", valor_dolar, total_reais);
+	printf("O custo da casa, considerando o salário mínimo de R$ %.2f é igual a R$ %.2f \n", salario, custo_casa);
+	printf("O total de casas construídas é %.0f \n", total_casas);
+	//printf("O dinheiro que sobrou é igual a R$ %.2f reais\n", (total_reais - (total_casas * custo_casa)));
+	
+}
+
+float calc_total(float valor_dolar)
+{
+	float total_reais;
+	
+	total_reais = 10000000 * valor_dolar;
+	
+	return total_reais;
+}
+
+float calc_custo_casa(float salario)
+{
+	float custo_casa;
+	
+	custo_casa = salario * 150;
+	
+	return custo_casa;
+}
+
+float tot_casas(float total_reais, float custo_casa)
+{
+	float total_casas;
+	
+	total_casas = (total_reais / custo_casa);
+	
+	return total_casas;
+}
+
+float sobra(float total_reais, float total_casas, float custo_casa)
+{
+	float sobra_dinheiro_casas, auxiliar;
+	
+	sobra_dinheiro_casas = (total_reais - (total_casas * custo_casa));
+	
+	return sobra_dinheiro_casas;
+}
+
+-----------------------------------------------------------------------------------
+8)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+float calc_pesoIdeal(float altura, char sexo);
+
+int main(int argc, char *argv[]) {
+	
+  	setlocale(LC_ALL, "Portuguese");
+  	
+  	float altura, peso;
+  	char sexo;
+  	
+  	printf("Informe m para masculino e f para feminino: \n");
+	scanf("\n%c", &sexo);	
+  	
+  	while((sexo != 'm') && (sexo != 'f'))
+  	{
+  		printf("Informe m para masculino e f para feminino de maneira correta: \n");
+		scanf("\n%c", &sexo);	
+	}
+	
+	do
+  	{
+  		printf("Informe sua altura: \n");
+		scanf("%f", &altura);	
+	}while(altura <= 0);
+	
+	peso = calc_pesoIdeal(altura, sexo);
+  	
+ 	printf("O peso ideal é igual a %.2f \n ", peso);
+ 	
+}
+
+float calc_pesoIdeal(float altura, char sexo)
+{
+	float peso;
+	
+	if(sexo == 'm')
+	{
+		peso = ((72.7 * altura) - 58);
+	}
+	if(sexo == 'f')
+	{
+		peso = ((62.1 * altura) - 44.7);
+	}
+	
+	return peso;
+}
+
+----------------------------------------------------------------------------------
+9)
+
+int main(int argc, char *argv[]) {
+	
+	setlocale(LC_ALL, "Portuguese");
+	
+  	int hh, mm, ss, conv;
+    
+    printf("Conversao de hr/min para segundos\n\nDigite o horario para conversao: (hh:mm:ss) \n\n");
+    
+    printf("Informe as Hora(s): ");
+    scanf("%d", &hh);
+    	
+    while((hh < 0) || (hh > 24))
+    {
+    	printf("Informe um número de Hora(s) válido: ");
+    	scanf("%d", &hh);
+	}
+    
+    printf("\nInforme os minutos Minuto(s): ");
+    scanf("%d", &mm);
+    
+    while((mm < 0) || (mm > 60))
+    {
+    	printf("\nInforme os minutos Minuto(s): ");
+    	scanf("%d", &mm);
+	}
+    
+    printf("\nInforme o(s) Segundo(s): ");
+    scanf("%d", &ss);
+    
+    while((ss < 0) || (ss > 60))
+    {
+    	printf("\nInforme o(s) Segundo(s): ");
+    	scanf("%d", &ss);
+	}
+    
+    conv = conversao(hh, mm, ss);
+    
+    printf("\n\nO valor convertido corresponde a: %d segundos", conv);
+	
+}
+
+int conversao(int hh, int mm, int ss)
+{
+    int conv;
+    
+    conv = (hh*60*60)+(mm*60)+(ss);
+
+    return conv;
+}
+
+-----------------------------------------------------------------------------------
+10)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+void soma( float n );
+
+int main(int argc, char *argv[]) {
+	
+	setlocale(LC_ALL, "Portuguese");
+	
+  	float n;
+
+      printf("Digite um numero maior que zero: ");
+      scanf("%f", &n);
+      
+      if(n > 0)      
+           soma( n );   
+      else
+          printf("\nValor invalido!\n");
+	
+}
+
+void soma(float n)
+{
+  float i, soma = 0;
+   
+         for(i = 1; i <= n; i++)
+              soma = soma + ( 1/i );
+
+         printf( "\nA soma e igual a = %2.2f", soma );      
+}
+
+-----------------------------------------------------------------------------------
+11) 
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+float soma(float num1, float num2);
+float potencia(float sum);
+float raiz(float sum);
+
+int main(int argc, char *argv[]) {
+	
+	setlocale(LC_ALL, "Portuguese");
+	
+  	float num1, num2, sum, potencia_cubica, raiz_quadrada;
+
+      printf("Digite o primeiro número: ");
+      scanf("%f", &num1);
+      
+      printf("Digite o segundo número: ");
+      scanf("%f", &num2);
+      
+      sum = soma(num1, num2);
+      potencia_cubica = potencia(sum);
+      raiz_quadrada = raiz(sum);
+      
+      printf("O valor da soma de dois números é %.2f \n", sum);
+      printf("O valor da soma de dois números elevado ao cubo é %.2f \n", potencia_cubica);
+	  printf("O valor da raiz quadrada da soma dos dois números é %.2f \n", raiz_quadrada);
+}
+
+float soma(float num1, float num2)
+{
+  float sum;
+  sum = num1 + num2;
+  return sum;           
+}
+
+float potencia(float soma)
+{
+  float potencia_cubica;
+  potencia_cubica = pow(soma,3);
+  return potencia_cubica;           
+}
+
+float raiz(float soma)
+{
+  float raiz_quadrada;
+  raiz_quadrada = sqrt(soma);
+  return raiz_quadrada;           
+}
+
+-----------------------------------------------------------------------------------
+12)
+
+Já resolvido na aula de estruturas condicionais - parte 1
+Necessário implementar as funções a escolha do aluno
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+ int main()
+{
+  float altura,largura,comprimento;
+  float c_diario,cap_total,auton_reser;
+  
+  setlocale(LC_ALL,"portuguese");
+
+  printf("Resevartório de Água\n\n");
+  
+  printf("Digite a altura (cm): \n");
+  scanf("%f",&altura);
+  
+  printf("Digite a largura (cm): \n");
+  scanf("%f",&largura);
+  
+  printf("Digite o comprimento (cm): \n");
+  scanf("%f",&comprimento);
+
+  printf("Consumo médio diário (litros/dia)= \n");
+  scanf("%f",&c_diario);
+
+  cap_total=(altura*largura*comprimento)/1000; /*o resultado seria em cm3 por isso, dividimos por mil para passar de cm3 para litros*/
+  auton_reser=cap_total/c_diario;
+
+  printf("Capacidade do Reservatório= %.2f litros \n",cap_total);
+  printf("Autonomia do reservatório= %.2f dias \n",auton_reser);
+  
+  if(auton_reser<2)
+   {
+     printf("Consumo Elevado \n");
+   }
+  else if(auton_reser>=2 && auton_reser<=7)
+    {
+       printf("Consumo Moderado \n"); 
+    }
+  else if(auton_reser>7)
+    {
+       printf("Consumo Baixo"); 
+    } 
+        
+	return 0;
+
+}

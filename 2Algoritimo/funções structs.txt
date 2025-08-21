@@ -1,0 +1,20 @@
+typedef - Renomeia o tipo do dado.
+
+Exemplo: struct tipo_pessoa{
+		int idade;
+		float peso;
+		char nome[50];
+		};
+	typedef tipo_pessoa tipo_pessoa;
+
+Para não ter que sempre colocas struct tipo_pessoa o comando typedef faz com que o nome que fica na frente do tipo seja o nome que vai ser usado pra puchar a struct.
+
+.................................................................................
+
+strcpy - permite atribuir um campo de string no campo.
+
+Exemplo: pes.idade = 10
+	 pes.peso = 99,99
+	 strcpy(pes.nome, "Vinicius");
+
+................................................................................. 

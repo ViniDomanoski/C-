@@ -1,0 +1,410 @@
+Exemplo aula - Typedef
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+typedef struct data 
+{ 
+	unsigned short dia; 
+	unsigned short mes; 
+	unsigned int ano; 
+	unsigned int idade; 
+} Data; 
+
+typedef struct aniversario 
+{ 
+	char nome[50]; 
+	Data nascimento; 
+} Aniversario;
+
+int main () 
+{ 
+	Aniversario Einstein, Newton; 	
+	Einstein.nascimento.dia = 14; 	
+	Einstein.nascimento.mes = 3; 	
+	Einstein.nascimento.ano = 1879; 
+	
+	Newton.nascimento.dia = 4; 	
+	Newton.nascimento.mes = 1; 	
+	Newton.nascimento.ano = 1643; 
+
+	Einstein.nascimento.idade = Calc_Idade_Einstein(Einstein, 2024); 	
+	Newton.nascimento.idade   = Calc_Idade_Newton(Newton, 2024); 
+
+	printf ( "A idade de Einstein seria %d anos.", Einstein.nascimento.idade); 
+	printf ( "A idade de Newton seria %d anos.", Newton.nascimento.idade);
+	return 0; 
+}
+
+int Calc_Idade_Einstein(Aniversario e, int anoAtual)
+{
+	anoAtual = 2024;
+	return anoAtual - e.nascimento.ano;
+}
+
+
+int Calc_Idade_Newton(Aniversario n, int anoAtual)
+{
+	anoAtual = 2024;
+	return anoAtual - n.nascimento.ano;
+}
+
+
+-------------------------------------------------------------------------------------------
+1)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+#define n 2
+
+typedef struct
+{
+	char marca[30];
+	int ano;
+	float preco;
+}carro;
+
+
+
+void armazenaValores(carro car[n])
+{
+	int i;
+   
+   for (i=0; i<n; i++) 
+   {
+   	
+   		printf("Carro %d \n", i+1);
+   		
+   		printf("Marca: ");
+   		scanf("%s", &car[i].marca);
+   		
+   		printf("Ano: ");
+   		scanf("%d", &car[i].ano);
+   		
+   		printf("Preço: ");
+   		scanf("%f", &car[i].preco);
+		
+		printf("\n\n");	
+   }
+   
+}
+
+void apresentaTodos(carro car[n]) {
+    int i;
+    float precoComparacao;
+    
+    printf("Informe um preço de comparação \n ");
+   	scanf("%f", &precoComparacao);
+    
+    	printf("\n\n");
+    	for (i = 0; i < n; i++)
+    	{
+    		if(car[i].preco < precoComparacao)
+    		{
+    			printf("\nMarca: %s \nAno: %d \nPreço: %.2f \n\n", 
+				car[i].marca, car[i].ano, car[i].preco);
+    		}
+		} 
+}
+
+int main() 
+{
+   setlocale(LC_ALL,"Portuguese"); 
+
+   carro car[n];  
+   armazenaValores(car);
+   apresentaTodos(car);
+
+   return 0;
+
+}
+
+
+------------------------------------------------------------------------------------
+2)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+struct  livro{ 
+  char titulo[100]; 
+  int ano; 
+  int num_pag; 
+  float preco;  
+}; 
+
+int main() {
+
+	setlocale(LC_ALL,"Portuguese"); 
+
+	struct livro DadosLivro[3]; 
+  	int i;
+	int MaiorPreco; 
+    float media, maior, soma = 0; 
+  //Leitura dos  Dados 
+  printf("\n----Registro de Livros---\n\n");  
+  for(i=0;i<3;i++)
+  { 
+    printf("Título: "); 
+    fflush(stdin);
+    scanf("%[^\n]", &DadosLivro[i].titulo);
+    //scanf("%s", &DadosLivro[i].titulo); -> Isso não funciona para títulos com espaço
+    
+ 
+    printf("Ano de Edição: ") ; 
+    scanf("%d",&DadosLivro[i].ano); 
+    
+    printf("Número de Páginas: "); 
+    scanf("%d",&DadosLivro[i].num_pag);
+	 
+    soma = soma + DadosLivro[i].num_pag; 
+    
+    printf("Preço: "); 
+    scanf("%f",& DadosLivro[i].preco);  
+    
+    if(i == 0)
+	{
+		maior = DadosLivro[0].preco; 
+		MaiorPreco = i;
+	}
+    if (DadosLivro[i].preco > maior)
+    { 
+      	maior = DadosLivro[i].preco; 
+      	MaiorPreco = i;
+    } 
+    printf(".................... ..\n\n"); 
+    fflush(stdin); 
+  } 
+  //Exibição dos Dados
+	printf("\n\n- --Livros Registrados---\n") ; 
+  for(i=0;i<3;i++)
+  { 
+    printf("\nTítulo: %s",DadosLivro[i].titulo) ; 
+    printf("\nAno de Edição:  %d",DadosLivro[i].ano); 
+    printf("\nNúmero de Páginas: %d",DadosLivro[i].num_pag); 
+    printf("\nPreço: %.2f",DadosLivro[i].preco); 
+    printf("\n................... ...\n\n"); 
+  } 
+  
+  media = soma / 3; 
+  
+  printf("\n\nMédia do Número de Páginas : %.2f",media) ; 
+  printf("\nTítulo d o Livro de Maior Preço é %s e o valor deste livro é R$ %.2f reais",DadosLivro[MaiorPreco].titulo, maior);
+
+   return 0;
+
+}
+
+----------------------------------------------------------------------------------
+3)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+#define N_FUNCIONARIO 5
+
+
+struct funcionario{
+    int matricula;
+    char nome[50];
+    float salario;
+};
+
+int main(void) {
+    int i;
+    float somaSalario=0, mediaSalario;
+    struct funcionario f[N_FUNCIONARIO];
+
+    //Recolhe valores
+    for (i=0; i<N_FUNCIONARIO; i++) {
+        printf("Funcionario %d\n", i+1);
+        printf("Matricula: ");
+	fflush(stdin);
+        scanf("%d", &f[i].matricula);
+        
+        printf("Nome: ");
+        fflush(stdin);
+        scanf("%[^\n]", &f[i].nome);
+        
+        printf("Salario: ");
+        scanf("%f", &f[i].salario);
+        fflush(stdin);
+        
+        printf("\n\n");
+        
+        somaSalario += f[i].salario;
+    }
+
+    //Calcula média salarial
+    mediaSalario = somaSalario/N_FUNCIONARIO;
+
+    //Apresenta funcionarios baixo media salarial
+    printf("Funcionarios com salario acima da media de R$ %.2f reais\n", mediaSalario);
+    for (i=0; i<N_FUNCIONARIO; i++)
+    {
+    	if (f[i].salario > mediaSalario)
+        {
+        	printf("Funcionario: %s\nMatricula: %d\nSalario: R$%.2f\n\n", f[i].nome, f[i].matricula, f[i].salario);
+		}
+	}
+	
+	printf("Funcionarios com salario abaixo da media de R$ %.2f reais\n", mediaSalario);
+	for (i=0; i<N_FUNCIONARIO; i++)
+    {
+    	if (f[i].salario < mediaSalario)
+        {
+        	printf("Funcionario: %s\nMatricula: %d\nSalario: R$%.2f\n\n", f[i].nome, f[i].matricula, f[i].salario);
+		}
+	}
+        
+            
+
+    return 0;
+}
+
+-----------------------------------------------------------------------------------
+4)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+#define N_PESSOAS 3
+
+typedef struct {
+    int matricula, ano;
+    char nome[50];
+} cadastro;
+
+void armazenaValores(cadastro p[N_PESSOAS]) {
+    int i;
+    for (i = 0; i < N_PESSOAS; i++) {
+        printf("Pessoa %d:\n", i+1);
+        printf("Nome: ");
+        fflush(stdin);
+        scanf("%[^\n]", p[i].nome);
+        printf("Matricula: ");
+        scanf("%d", &p[i].matricula);
+        printf("Ano nascimento: ");
+        scanf("%d", &p[i].ano);
+        printf("\n\n");
+    }
+}
+void apresentaTodos(cadastro p[N_PESSOAS]) {
+    int i;
+    printf("\n\n");
+    for (i = 0; i < N_PESSOAS; i++)
+        printf("%s\nMatricula: %d\nAno de nascimento: %d\nIdade: %d\n\n", p[i].nome, p[i].matricula, p[i].ano, 2024-p[i].ano);
+}
+void apresentaIdadeMedia(cadastro p[N_PESSOAS]) {
+    int i, somaAno=0;
+    printf("\n\n");
+    for (i = 0; i < N_PESSOAS; i++)
+        somaAno += (2024 - (p[i].ano));
+    printf("Idade media das pessoas cadastradas: %d", somaAno/N_PESSOAS);
+}
+void apresentaAnoSuperior(cadastro p[N_PESSOAS]) {
+    int i, anoInformado;
+    printf("\n\nDigite um ano: ");
+    scanf("%d", &anoInformado);
+    for (i = 0; i < N_PESSOAS; i++)
+        if (p[i].ano > anoInformado)
+            printf("\n%s\nMatricula: %d\nAno de nascimento: %d\nIdade: %d\n\n", p[i].nome, p[i].matricula, p[i].ano, 2021-p[i].ano);
+}
+
+//Algorítimo principal
+int main() {
+    setlocale(LC_ALL,"Portuguese");
+    int i;
+    cadastro p[N_PESSOAS];
+
+    armazenaValores(p);
+    apresentaTodos(p);
+    apresentaIdadeMedia(p);
+    apresentaAnoSuperior(p);
+
+    return 0;
+}
+
+----------------------------------------------------------------------------------
+5)
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <math.h>
+
+
+
+typedef struct {
+    char nome[50];
+    char marca[30]; 
+	int validadeGarantia;
+} produtos;
+
+//Pegar quantidade eletrodomesticos ou pereciveis
+int informaQuantidade(char c[]) {
+    int n;
+    do {
+        printf("Digite a quantidade de %s a serem cadastrados: \n", c);
+        scanf("%d", &n);
+        if ((n < 0) || (n > 3))
+            printf("\n\nDigite um numero de 1 a 3!\n\n");
+    } while ((n < 0) || (n > 3));
+    
+    return n;
+}
+//Armazenar eletrodomesticos ou pereciveis
+void armazenaQuantidade(int n, produtos produto[3]) {
+    int i;
+    for (i=0; i<n; i++) {
+        printf("Produto %d\n", i+1);
+        printf("Nome: ");
+        fflush(stdin);
+        scanf("%[^\n]", produto[i].nome);
+        printf("Marca ou nome do produtor: ");
+        fflush(stdin);
+        scanf("%[^\n]", &produto[i].marca);
+        printf("Validade Eletrodoméstico (anos) ou Garantia Perecíveis (dias): ");
+        scanf("%d", &produto[i].validadeGarantia);
+        printf("\n\n");
+    }
+}
+//Apresenta eletrodomesticos ou perecíveis na tela
+void apresentaProdutos(int n, produtos produto[3], char c[]) {
+    int i;
+    printf("%s:\n", c);
+    for (i=0; i<n; i++) {
+        printf("\nProduto %d\nNome: %s\nMarca: %s\nValidade ou garantia: %d", i+1, produto[i].nome, produto[i].marca, produto[i].validadeGarantia);
+        printf("\n");
+    }
+    printf("\n");
+}
+
+//Algorítimo principal
+int main() {
+	
+	setlocale(LC_ALL,"Portuguese");
+	
+    int qE, qP;
+    produtos e[3], p[3];
+
+    qE = informaQuantidade("eletrodomésticos");
+    armazenaQuantidade(qE, e);
+    qP = informaQuantidade("perecíveis");
+    armazenaQuantidade(qP, p);
+    apresentaProdutos(qE, e, "eletrodomésticos");
+    apresentaProdutos(qP, p, "perecíveis");
+
+    return 0;
+}
