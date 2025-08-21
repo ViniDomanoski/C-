@@ -15,7 +15,7 @@ int main() {
 	{
 		for(j = 0; j < 2; j = j + 1)
 		{
-			printf("Digite o valor da posição %d %d em graus Farenheit: ", i, j);
+			printf("Digite o valor da posiï¿½ï¿½o %d %d em graus Farenheit: ", i, j);
 			scanf("%f", &mat[i][j]);
 			
 			celsius[i][j] = ((5*(mat[i][j] - 32))/9);
@@ -31,6 +31,7 @@ int main() {
 		}
 		printf("\n");
 	}
+	printf("teste");
 	
 	return 0;
 }
